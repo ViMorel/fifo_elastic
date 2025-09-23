@@ -16,7 +16,7 @@ ARCHITECTURE dcpt_tb_arch OF dcpt_tb IS
     GENERIC ( 
       M  : INTEGER  );  
     PORT ( 
-      cptr  : out std_logic_vector (M - 1 downto 0) ; 
+      cptr  : out unsigned (M - 1 downto 0) ; 
       ud  : in STD_LOGIC ; 
       clk  : in STD_LOGIC ; 
       enable  : in STD_LOGIC ; 

@@ -7,7 +7,7 @@ ENTITY dcpt_tb  IS
 END ; 
  
 ARCHITECTURE dcpt_tb_arch OF dcpt_tb IS
-  SIGNAL cptr   :  std_logic_vector (M - 1 downto 0)  ; 
+  SIGNAL cptr   : unsigned (M - 1 downto 0)  ; 
   SIGNAL ud   :  STD_LOGIC  ; 
   SIGNAL clk   :  STD_LOGIC  ; 
   SIGNAL enable   :  STD_LOGIC  ; 

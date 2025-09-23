@@ -12,8 +12,8 @@ entity genhl is
     );
 end entity;
 
-architecture behavior of genhl is 
-    signal counter   : integer   := 0;
+architecture genhl of genhl is 
+    signal counter   : unsigned(M-1 downto 0) := (others => '0');
     signal reset_sig : std_logic;
 begin 
 
@@ -31,4 +31,4 @@ begin
     enread    <= '1' when (counter = 200) else '0';
     enwrite   <= '1' when (not (counter = 200)) else '0';
 
-end architecture behavior;
+end architecture genhl;

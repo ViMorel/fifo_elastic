@@ -7,8 +7,8 @@ entity fifo_elastic is
         N       : integer := 8;
         M       : integer := 16;
         Tsetup  : time    := 10ns;
-        Thold   : time    := 3ns;
-    )
+        Thold   : time    := 3ns
+    );
     port(
         clk     : in std_logic;
         reset   : in std_logic;
@@ -18,7 +18,7 @@ entity fifo_elastic is
         Dout    : out std_logic_vector(N-1 downto 0);
         hl      : out std_logic;
         fast    : out std_logic;
-        slow    : out std_logic;
+        slow    : out std_logic
     );
 end entity;
 
@@ -34,6 +34,7 @@ architecture fifo_elastic of fifo_elastic is
     signal data     : std_logic_vector(N-1 downto 0);
     signal data_c   : std_logic_vector(N-1 downto 0);
     signal addr     : std_logic_vector(M-1 downto 0);
+    
 begin
     genhl : entity work.genhl
         generic map(M => M)
@@ -45,7 +46,7 @@ begin
     );
 
     sequencer : entity work.sequencer
-        generic map(M => M)
+        
         port map(
             clk      => clk,
             reset    => reset,
@@ -107,7 +108,7 @@ begin
         port map(
             clk  => clk,
             Din  => Din,
-            regN => regN
+            regN => data
         );
 
     complement_a_2 : entity work.complement_a_2
@@ -115,8 +116,8 @@ begin
             N => N
         )
         port map(
-            nombre => regN;
-            sortie => data_c;
+            nombre => data,
+            sortie => data_c
         );
 
 end architecture fifo_elastic;

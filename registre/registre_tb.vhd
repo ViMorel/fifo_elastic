@@ -5,8 +5,8 @@ entity registre_tb is
 end entity;
 
 architecture arch of registre_tb is
-  constant N      : integer := 8;
-  constant Tsetup : time := 5 ns;
+  constant N : integer := 8;
+  constant Tsetup : time := 10 ns;
   constant Thold  : time := 3 ns;
 
   signal clk  : std_logic := '0';
@@ -48,8 +48,8 @@ begin
     
 
     -- Violation setup 
-    Din<= "11110000";
-    wait for 49 ns;  
+    wait for 45 ns; 
+    d <= "11110000";
     wait for 100 ns;
 
     -- Violation hold 
@@ -62,3 +62,4 @@ begin
   end process;
 
 end architecture;
+

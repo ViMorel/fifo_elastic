@@ -6,14 +6,14 @@ entity RAM_2pMxNbits is
     generic(
         data_width : integer := 64; --N = data_width
         addr_width : integer := 32  --M = addr_width,
-        );  
+    );  
     port(oe_i  : in std_logic;
         data_i : in std_logic_vector(data_width-1 downto 0);
         cs_ni  : in std_logic;
         rw_ni  : in std_logic;
         addr_i : in std_logic_vector(addr_width-1 downto 0);
         data_o : out std_logic_vector(data_width-1 downto 0)
-        );
+    );
 end entity;
 
 architecture behavior of RAM_2pMxNbits is 

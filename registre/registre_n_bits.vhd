@@ -10,8 +10,8 @@ entity registre is
   );
   port (
     clk : in  std_logic;
-    d   : in  std_logic_vector(N-1 downto 0);
-    q   : out std_logic_vector(N-1 downto 0)
+    Din   : in  std_logic_vector(N-1 downto 0);
+    regN   : out std_logic_vector(N-1 downto 0)
   );
 end entity registre;
 
@@ -22,21 +22,21 @@ begin
   process(clk)
   begin
     if rising_edge(clk) then
-      q <= d;
+      regN <= Din;
     end if;
   end process;
 
-  -- Vérification setup
+  -- Vï¿½rification setup
   setup_check : process
   begin
-    check_setup(clk, d, Tsetup, error);
+    check_setup(clk, Din, Tsetup, error);
     wait;
   end process;
 
-  -- Vérification hold
+  -- Vï¿½rification hold
   hold_check : process
   begin
-    check_hold(clk, d, Thold, error);
+    check_hold(clk, Din, Thold, error);
     wait;
   end process;
 

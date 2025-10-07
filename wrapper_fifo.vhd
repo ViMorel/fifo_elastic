@@ -6,8 +6,8 @@ entity fifo_elastic is
     generic(
         N       : integer := 8;
         M       : integer := 16;
-        Tsetup  : time := 5ns;
-        Thold   : time := 3ns;
+        Tsetup  : time    := 10ns;
+        Thold   : time    := 3ns;
     )
     port(
         clk     : in std_logic;
@@ -84,7 +84,7 @@ begin
             adrg     => addr
         );
 
-        RAM_2pMxNbits : entity work.RAM_2pMxNbits
+    RAM_2pMxNbits : entity work.RAM_2pMxNbits
         generic map(
             data_width => N,
             addr_width => M
@@ -96,6 +96,27 @@ begin
             rw_ni  => rw_n,
             addr_i => addr,
             data_o => Dout
+        );
+
+    registre_n_bits : entity work.registre_n_bits
+        generic map(
+            N      => N,
+            Tsetup => Tsetup,
+            Thold  => Thold
+        ) 
+        port map(
+            clk  => clk,
+            Din  => Din,
+            regN => regN
+        );
+
+    complement_a_2 : entity work.complement_a_2
+        generic map(
+            N => N
+        )
+        port map(
+            nombre => regN;
+            sortie => data_c;
         );
 
 end architecture fifo_elastic;

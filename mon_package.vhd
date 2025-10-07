@@ -5,21 +5,21 @@ use ieee.std_logic_1164.all ;
 use ieee.std_logic_unsigned.all ;
 
 package mes_fonctions is
-function cpl2 (entree : std_logic_vector ; N : natural) 
-					return std_logic_vector ;
-end mes_fonctions ;
+function cpl2 (entree : std_logic_vector; N : natural) 
+					return std_logic_vector;
+end mes_fonctions;
 -------------------------------------------------------------------------
 package body mes_fonctions is
-function cpl2 (entree : std_logic_vector ; N : natural) 
-					return std_logic_vector  is
+function cpl2 (entree : std_logic_vector; N : natural) 
+					return std_logic_vector  is
  
-variable temp : std_logic_vector( N-1 downto 0) ;
+variable temp : std_logic_vector( N-1 downto 0);
 begin
 temp := not entree;
-temp := temp + '1' ;
-return temp ;
-end cpl2 ;
-end mes_fonctions ;
+temp := temp + '1';
+return temp;
+end cpl2;
+end mes_fonctions;
 --------------------------------------------------------------------------
 library ieee ;
 use ieee.std_logic_1164.all ;

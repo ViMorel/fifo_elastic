@@ -6,9 +6,9 @@ entity fifo_elastic is
     generic(
         N       : integer := 8;
         M       : integer := 16;
-        Tsetup  : time    := 10ns;
-        Thold   : time    := 3ns;
-    )
+        Tsetup  : time    := 10 ns;
+        Thold   : time    := 3 ns
+    );
     port(
         clk     : in std_logic;
         reset   : in std_logic;
@@ -18,7 +18,7 @@ entity fifo_elastic is
         Dout    : out std_logic_vector(N-1 downto 0);
         hl      : out std_logic;
         fast    : out std_logic;
-        slow    : out std_logic;
+        slow    : out std_logic
     );
 end entity;
 
@@ -115,8 +115,8 @@ begin
             N => N
         )
         port map(
-            nombre => regN;
-            sortie => data_c;
+            nombre => regN,
+            sortie => data_c
         );
 
 end architecture fifo_elastic;

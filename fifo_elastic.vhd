@@ -22,7 +22,7 @@ entity fifo_elastic is
     );
 end entity;
 
-architecture fifo_elastic of fifo_elastic is 
+architecture archi_fifo_elastic of fifo_elastic is 
     signal read     : std_logic;
     signal write    : std_logic;
     signal incread  : std_logic;
@@ -117,4 +117,4 @@ begin
             sortie => data_c
         );
 
-end architecture fifo_elastic;
+end architecture archi_fifo_elastic;

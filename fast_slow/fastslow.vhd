@@ -10,7 +10,7 @@ entity fastslow is
         incread  : in std_logic;
         incwrite : in std_logic;
         fast     : out std_logic;
-        slow     : out std_logic;
+        slow     : out std_logic
     );
 end entity;
 
@@ -31,13 +31,13 @@ begin
     process(incwrite, incread) begin 
         if(incwrite = '1') then
             ud_sig <= '1';
-        else if(incread) then
+        else if(incread = '1') then
             ud_sig <= '0';
         end if;
         end if;
     end process;
 
-    fast <= '1' when not(counter_sig(M-1) or counter_sig(M-2)) else '0';
-    slow <= '1' when (counter_sig(M-1) and counter_sig(M-2) else '0');
+    fast <= not(counter_sig(M-1) or counter_sig(M-2));
+    slow <= counter_sig(M-1) and counter_sig(M-2);
 
 end architecture fastslow;

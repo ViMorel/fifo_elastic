@@ -4,8 +4,8 @@ use ieee.numeric_std.all;
 
 entity RAM_2pMxNbits is 
     generic(
-        data_width : integer := 64; --N = data_width
-        addr_width : integer := 32  --M = addr_width,
+        data_width : integer := 16; --N = data_width
+        addr_width : integer := 8  --M = addr_width,
     );  
     port(oe_i  : in std_logic;
         data_i : in std_logic_vector(data_width-1 downto 0);
@@ -17,7 +17,7 @@ entity RAM_2pMxNbits is
 end entity;
 
 architecture behavior of RAM_2pMxNbits is 
-    type mem_type is array (0 to addr_width-1) of std_logic_vector(data_width-1 downto 0);
+    type mem_type is array (0 to 2**addr_width-1) of std_logic_vector(data_width-1 downto 0);
     signal mem_reg : mem_type;
 begin   
     process(oe_i, data_i, cs_ni, rw_ni, addr_i) begin

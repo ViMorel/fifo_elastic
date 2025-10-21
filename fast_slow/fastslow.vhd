@@ -29,7 +29,7 @@ begin
     );
 
     
-    enable_xor <= not((incread or incwrite));
+    enable_xor <= incread xor incwrite;
     
     fast <= not(counter_sig(M-1) or counter_sig(M-2));
     slow <= counter_sig(M-1) and counter_sig(M-2);

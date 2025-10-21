@@ -18,12 +18,12 @@ architecture genadr of genadr is
     generic(M : integer := 8);
     port (
       clk, reset, enable, ud : in std_logic;
-      cptr : out std_logic_vector(M-1 downto 0)
+      cptr : out unsigned(M-1 downto 0)
     );
   end component;
 
-  signal addr_read  : std_logic_vector(M-1 downto 0);
-  signal addr_write : std_logic_vector(M-1 downto 0);
+  signal addr_read  : unsigned(M-1 downto 0);
+  signal addr_write : unsigned(M-1 downto 0);
 
 begin
 
@@ -38,7 +38,7 @@ begin
       cptr   => addr_read
     );
     
-  -- Instanciation écriture
+  -- Instanciation ï¿½criture
   compteur_write : DCPT
     generic map(M => M)
     port map(
@@ -53,9 +53,9 @@ begin
     begin 
     
   if selread='1'then
-    Adrg<=addr_read;
+    Adrg<= std_logic_vector(addr_read);
   else 
-    Adrg<=addr_write;
+    Adrg<= std_logic_vector(addr_write);
     end if;
     
     end process;

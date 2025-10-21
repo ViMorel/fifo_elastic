@@ -23,7 +23,7 @@ begin
     process(oe_i, data_i, cs_ni, rw_ni, addr_i) begin
         if(cs_ni = '1') then 
             data_o <= (others => 'Z');
-        else if(rw_ni = '1')then
+        else if(rw_ni = '0')then
             mem_reg(to_integer(unsigned(addr_i))) <= data_i;
             else if(oe_i = '1') then
                 data_o <= mem_reg(to_integer(unsigned(addr_i)));
